@@ -3,7 +3,7 @@ PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved.
 Your reuse is governed by the Creative Commons Attribution 3.0 License 
 --------------------------------------------------------------------------
 Release Date: 10/5/08
-    Platform: ActionScript 3 (Flash, Flex, AIR)
+    Platform: Java
      Version: 1 
     Revision: 0
       Author: Matthieu Mauny <matthieu.mauny@puremvc.org> 
