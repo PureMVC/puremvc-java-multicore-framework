@@ -8,6 +8,7 @@
 package org.puremvc.java.multicore.patterns.facade;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.puremvc.java.multicore.core.controller.Controller;
 import org.puremvc.java.multicore.core.model.Model;
@@ -18,8 +19,6 @@ import org.puremvc.java.multicore.interfaces.IMediator;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.interfaces.IProxy;
 import org.puremvc.java.multicore.patterns.observer.Notification;
-
-;
 
 /**
  * A base Multiton <code>IFacade</code> implementation.
@@ -51,7 +50,7 @@ public class Facade implements IFacade
 	 */
 	protected String multitonKey;
 	
-	protected static HashMap<String, Facade> instanceMap = new HashMap<String, Facade>();
+	protected static Map<String, Facade> instanceMap = new HashMap<String, Facade>();
 
 	/**
 	 * Constructor. 
@@ -339,7 +338,7 @@ public class Facade implements IFacade
 	 * <P>
 	 * Keeps us from having to construct new notification 
 	 * instances in our implementation code.
-	 * @param notificationName the name of the notiification to send
+	 * @param notificationName the name of the notification to send
 	 * @param body the body of the notification (optional)
 	 * @param type the type of the notification (optional)
 	 */ 
@@ -347,15 +346,42 @@ public class Facade implements IFacade
 	{
 		notifyObservers( new Notification( notificationName, body, type ) );
 	}
+	
+	/**
+	 * Create and send an <code>INotification</code>.
+	 * 
+	 * <P>
+	 * Keeps us from having to construct new notification 
+	 * instances in our implementation code.
+	 * @param notificationName the name of the notification to send
+	 * @param body the body of the notification (optional)
+	 */ 
+	public void sendNotification( String notificationName, Object body) 
+	{
+		sendNotification(notificationName, body, null);
+	}
+	
+	/**
+	 * Create and send an <code>INotification</code>.
+	 * 
+	 * <P>
+	 * Keeps us from having to construct new notification 
+	 * instances in our implementation code.
+	 * @param notificationName the name of the notification to send
+	 */ 
+	public void sendNotification( String notificationName) 
+	{
+		sendNotification(notificationName, null, null);
+	}
 
 	/**
-	 * Notify <code>Observer</code>s.
+	 * Notify <code>Observer</code>s of an <code>INotification</code>.
 	 * 
-	 * @param notification
+	 * @param note
 	 *            the <code>INotification</code> to have the <code>View</code>
-	 *            notify <code>Observers</code> of.
+	 *            notify observers of.
 	 */
-	public void notifyObservers( INotification notification )
+	private void notifyObservers( INotification notification )
 	{
 		if (this.view != null) {
 			this.view.notifyObservers( notification );

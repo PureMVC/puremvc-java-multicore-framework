@@ -29,15 +29,6 @@ package org.puremvc.java.multicore.interfaces;
 public interface IFacade extends INotifier
 {
 	/**
-	 * Notify <code>Observer</code>s of an <code>INotification</code>.
-	 * 
-	 * @param note
-	 *            the <code>INotification</code> to have the <code>View</code>
-	 *            notify observers of.
-	 */
-	public void notifyObservers( INotification note );
-
-	/**
 	 * Register an <code>IProxy</code> with the <code>Model</code> by name.
 	 * 
 	 * @param proxy

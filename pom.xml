@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.puremvc</groupId>
+	<artifactId>PureMVC_Java_MultiCore</artifactId>
+	<version>1.0.6</version>
+	<packaging>jar</packaging>
+	<name>PureMVC_Java_MultiCore</name>
+	<description>
+		PureMVC is a lightweight framework for creating applications
+		based upon the classic Model-View-Controller design
+		meta-pattern. This is a Java port of the AS3 reference
+		implementation of the MultiCore Version. It supports modular
+		programming through the use of Multiton Core actors (instead of
+		the Singletons used in the Standard Version).
+	</description>
+	<url>http://trac.puremvc.org/PureMVC_Java_MultiCore</url>
+	<licenses>
+		<license>
+			<name>
+				Reuse governed by Creative Commons Attribution 3.0
+				United States License
+			</name>
+			<url>http://creativecommons.org/licenses/by/3.0/us/</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<scm>
+		<url>http://svn.puremvc.org/PureMVC_Java_MultiCore</url>
+	</scm>
+
+	<build>
+		<sourceDirectory>${basedir}/src</sourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.5</source>
+					<target>1.5</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<developers>
+		<developer>
+			<id>dsi_opensource</id>
+			<name>DSI Open Source</name>
+			<email>dsi_opensource@ima.eu</email>
+			<url>http://www.ima.eu</url>
+			<organization>Inter Mutuelles Assistance</organization>
+			<organizationUrl>http://www.ima.eu</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>mmauny</id>
+			<name>Matthieu Mauny</name>
+			<email>matthieu.mauny@puremvc.org</email>
+			<url>http://www.puremvc.org</url>
+			<organization>PureMVC</organization>
+			<organizationUrl>http://www.puremvc.org</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+		<developer>
+			<id>aquinault</id>
+			<name>Anthony Quinault</name>
+			<email>aquinault@cadesoft.com</email>
+			<url>http://www.cadesoft.com</url>
+			<organization>CADE SOFT</organization>
+			<organizationUrl>http://www.cadesoft.com</organizationUrl>
+			<roles>
+				<role>developer</role>
+			</roles>
+			<timezone>+1</timezone>
+		</developer>
+	</developers>
+	<dependencies></dependencies>
+	<distributionManagement>
+		<repository>
+			<id>PureMVC</id>
+			<name>repository PureMVC</name>
+			<url>
+				http://svn.puremvc.org/PureMVC_Java_MultiCore/repo
+			</url>
+		</repository>
+	</distributionManagement>
+</project>

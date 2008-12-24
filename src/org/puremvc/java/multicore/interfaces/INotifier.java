@@ -54,6 +54,35 @@ public interface INotifier
 	public void sendNotification( String notificationName, Object body,	String type );
 	
 	/**
+	 * Send a <code>INotification</code>.
+	 * 
+	 * <P>
+	 * Convenience method to prevent having to construct new notification
+	 * instances in our implementation code.
+	 * </P>
+	 * 
+	 * @param notificationName
+	 *            the name of the notification to send
+	 * @param body
+	 *            the body of the notification (optional)
+	 */
+	public void sendNotification( String notificationName, Object body);
+	
+	/**
+	 * Send a <code>INotification</code>.
+	 * 
+	 * <P>
+	 * Convenience method to prevent having to construct new notification
+	 * instances in our implementation code.
+	 * </P>
+	 * 
+	 * @param notificationName
+	 *            the name of the notification to send
+	 */
+	public void sendNotification( String notificationName);
+	
+	
+	/**
 	 * Initialize this INotifier instance.
 	 * <P>
 	 * This is how a Notifier gets its multitonKey. 

@@ -7,7 +7,7 @@
  */
 package org.puremvc.java.multicore.patterns.command;
 
-import java.util.Enumeration;
+import java.util.Collection;
 import java.util.Vector;
 
 import org.puremvc.java.multicore.interfaces.ICommand;
@@ -48,7 +48,7 @@ import org.puremvc.java.multicore.patterns.observer.Notifier;
 public class MacroCommand extends Notifier implements ICommand
 {
 
-	private Vector<ICommand> subCommands = null;
+	private Collection<ICommand> subCommands = null;
 
 	/**
 	 * Constructor.
@@ -107,7 +107,7 @@ public class MacroCommand extends Notifier implements ICommand
 	 */
 	protected void addSubCommand( ICommand commandClassRef )
 	{
-		this.subCommands.addElement( commandClassRef );
+		this.subCommands.add( commandClassRef );
 	}
 
 	/**
@@ -122,11 +122,9 @@ public class MacroCommand extends Notifier implements ICommand
 	 *            <i>SubCommand</i>.
 	 */
 	public void execute(INotification notification) {
-		ICommand commandInstance = null;
-		for (Enumeration enu = this.subCommands.elements(); enu.hasMoreElements();) {
-			commandInstance = (ICommand) enu.nextElement();
-			commandInstance.initializeNotifier( multitonKey );
-			commandInstance.execute( notification );
+		for (ICommand command : subCommands) { 
+			command.initializeNotifier( multitonKey );
+			command.execute( notification );
 		}
 	}
 }

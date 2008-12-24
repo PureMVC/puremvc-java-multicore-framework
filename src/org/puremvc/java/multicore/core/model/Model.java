@@ -8,6 +8,7 @@
 package org.puremvc.java.multicore.core.model;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.puremvc.java.multicore.interfaces.IModel;
 import org.puremvc.java.multicore.interfaces.IProxy;
@@ -49,14 +50,14 @@ public class Model implements IModel
 	/**
 	 * Mapping of proxyNames to IProxy instances
 	 */
-	protected HashMap<String, IProxy> proxyMap;
+	protected Map<String, IProxy> proxyMap;
 	
 	/**
 	 * 	 The Multiton Key for this Core
 	 */
 	protected String multitonKey;
 	
-	protected static HashMap<String, Model> instanceMap = new HashMap<String, Model>();
+	protected static Map<String, Model> instanceMap = new HashMap<String, Model>();
 
 	/**
 	 * Constructor. 

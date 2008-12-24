@@ -71,6 +71,40 @@ public class Notifier
 	}
 	
 	/**
+	 * Send an <code>INotification</code>s.
+	 * 
+	 * <P>
+	 * Keeps us from having to construct new notification instances in our
+	 * implementation code.
+	 * 
+	 * @param notificationName
+	 *            the name of the notiification to send
+	 * @param body
+	 *            the body of the notification (optional)
+	 */
+
+	public void sendNotification( String notificationName, Object body)
+	{
+		getFacade().sendNotification( notificationName, body);
+	}
+	
+	/**
+	 * Send an <code>INotification</code>s.
+	 * 
+	 * <P>
+	 * Keeps us from having to construct new notification instances in our
+	 * implementation code.
+	 * 
+	 * @param notificationName
+	 *            the name of the notiification to send
+	 */
+
+	public void sendNotification( String notificationName)
+	{
+		getFacade().sendNotification( notificationName);
+	}
+	
+	/**
 	 * Initialize this INotifier instance.
 	 * <P>
 	 * This is how a Notifier gets its multitonKey. 

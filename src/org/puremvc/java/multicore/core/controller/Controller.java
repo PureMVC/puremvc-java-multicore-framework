@@ -8,6 +8,7 @@
 package org.puremvc.java.multicore.core.controller;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.puremvc.java.multicore.core.view.View;
 import org.puremvc.java.multicore.interfaces.ICommand;
@@ -55,7 +56,7 @@ public class Controller implements IController
 	/**
 	 * Mapping of Notification names to Command Class references
 	 */
-	protected HashMap<String,ICommand> commandMap;
+	protected Map<String,ICommand> commandMap;
 
 	/**
 	 * Local reference to View
@@ -67,7 +68,7 @@ public class Controller implements IController
 	 */
 	protected String multitonKey;
 	
-	protected static HashMap<String, Controller> instanceMap = new HashMap<String, Controller>();
+	protected static Map<String, Controller> instanceMap = new HashMap<String, Controller>();
 
 	/**
 	 * Constructor. 

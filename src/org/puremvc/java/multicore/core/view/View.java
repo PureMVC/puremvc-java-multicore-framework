@@ -10,6 +10,7 @@ package org.puremvc.java.multicore.core.view;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.puremvc.java.multicore.interfaces.IFunction;
 import org.puremvc.java.multicore.interfaces.IMediator;
@@ -50,7 +51,7 @@ public class View implements IView
 	 */
 	protected String multitonKey;
 	
-	protected static HashMap<String, View> instanceMap = new HashMap<String, View>();
+	protected static Map<String, View> instanceMap = new HashMap<String, View>();
 	
 	
 	/**
@@ -119,11 +120,17 @@ public class View implements IView
 	 */
 	public void notifyObservers( INotification note )
 	{
-		List<IObserver> observers = (List<IObserver>) this.observerMap.get(note.getName());
-		if (observers != null) {
-			Object[] array = (Object[])observers.toArray();
-			for (int i = 0; i < array.length; i++) {
-				IObserver observer = (IObserver)array[i];
+		List<IObserver> observers_ref = (List<IObserver>) this.observerMap.get(note.getName());
+		if (observers_ref != null) {
+            
+			// Copy observers from reference array to working array,
+            // since the reference array may change during the
+            //notification loop
+			Object[] observers = (Object[])observers_ref.toArray();
+			
+			// Notify Observers from the working array
+			for (int i = 0; i < observers.length; i++) {
+				IObserver observer = (IObserver)observers[i];
 				observer.notifyObserver(note);
 			}
 		}
