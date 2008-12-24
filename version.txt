@@ -1,12 +1,21 @@
-PureMVC Java MultiCore Port by Matthieu Mauny <matthieu.mauny@puremvc.org> 
-PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved. 
-Your reuse is governed by the Creative Commons Attribution 3.0 License 
+ PureMVC Java MultiCore Port by Ima OpenSource <opensource@ima.eu>
+ Maintained by Matthieu Mauny <matthieu.mauny@puremvc.org>
+ And Anthony Quinault <aquinault@cadesoft.com>
+ PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved. 
+ Your reuse is governed by the Creative Commons Attribution 3.0 License 
 --------------------------------------------------------------------------
-Release Date: 10/5/08
+Release Date: 12/24/08
     Platform: Java
      Version: 1 
-    Revision: 0
-      Author: Matthieu Mauny <matthieu.mauny@puremvc.org> 
+    Revision: 0.6
+      Author: Ima OpenSource <opensource@ima.eu> 
      License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
-1.0   - Initial Java MultiCore Port.
+1.0.6
+- Christmas edition
+- Collection are more generic
+- Java 1.5
+- Emulation of as3 capabilty to have more or less parametrers.
+
+1.0   
+- Initial Java MultiCore Port.
