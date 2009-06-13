@@ -75,10 +75,10 @@
 		<developer>
 			<id>aquinault</id>
 			<name>Anthony Quinault</name>
-			<email>aquinault@cadesoft.com</email>
-			<url>http://www.cadesoft.com</url>
-			<organization>CADE SOFT</organization>
-			<organizationUrl>http://www.cadesoft.com</organizationUrl>
+			<email>anthony.quinalt@puremvc.org</email>
+			<url>http://puremvc.org</url>
+			<organization>PureMVC Project</organization>
+			<organizationUrl>http://puremvc.org</organizationUrl>
 			<roles>
 				<role>developer</role>
 			</roles>
