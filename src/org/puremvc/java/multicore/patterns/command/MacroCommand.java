@@ -1,7 +1,6 @@
 /* 
  PureMVC Java MultiCore Port by Ima OpenSource <opensource@ima.eu>
- Maintained by Matthieu Mauny <matthieu.mauny@puremvc.org>
- And Anthony Quinault <aquinault@gmail.com>
+ Maintained by Anthony Quinault <anthony.quinault@puremvc.org>
  PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved. 
  Your reuse is governed by the Creative Commons Attribution 3.0 License 
  */
