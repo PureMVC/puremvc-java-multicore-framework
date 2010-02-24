@@ -398,7 +398,7 @@ public class Facade implements IFacade
 	 * @param key the multiton key for the Core in question
 	 * @return whether a Core is registered with the given <code>key</code>.
 	 */
-	public static boolean hasCore( String key ) 
+	public synchronized static boolean hasCore( String key ) 
 	{
 		return instanceMap.containsKey(key);
 	}
@@ -409,7 +409,7 @@ public class Facade implements IFacade
 	 * 
 	 * @param multitonKey of the Core to remove
 	 */
-	public static void removeCore( String key )
+	public synchronized static void removeCore( String key )
 	{
 		// remove the model, view, controller 
 		// and facade instances for this key 

@@ -299,10 +299,9 @@ public class View implements IView
 	 * 
 	 * @param multitonKey of IView instance to remove
 	 */
-	public static void removeView( String key)
+	public synchronized static void removeView( String key)
 	{
 		instanceMap.remove(key);
 	}
-	
 	
 }

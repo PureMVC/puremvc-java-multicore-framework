@@ -146,7 +146,7 @@ public class Model implements IModel
 	 * 
 	 * @param multitonKey of IModel instance to remove
 	 */
-	public static void removeModel( String key )
+	public synchronized static void removeModel( String key )
 	{
 		instanceMap.remove(key);
 	}

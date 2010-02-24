@@ -200,7 +200,7 @@ public class Controller implements IController
 	 * 
 	 * @param multitonKey of IController instance to remove
 	 */
-	public static void removeController(String key )
+	public synchronized static void removeController(String key )
 	{
 		instanceMap.remove(key);
 	}

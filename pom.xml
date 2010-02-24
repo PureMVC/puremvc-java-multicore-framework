@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.puremvc</groupId>
 	<artifactId>PureMVC_Java_MultiCore</artifactId>
-	<version>1.0.6</version>
+	<version>1.0.7</version>
 	<packaging>jar</packaging>
 	<name>PureMVC_Java_MultiCore</name>
 	<description>
@@ -48,30 +48,6 @@
 		</plugins>
 	</build>
 	<developers>
-		<developer>
-			<id>dsi_opensource</id>
-			<name>DSI Open Source</name>
-			<email>dsi_opensource@ima.eu</email>
-			<url>http://www.ima.eu</url>
-			<organization>Inter Mutuelles Assistance</organization>
-			<organizationUrl>http://www.ima.eu</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>+1</timezone>
-		</developer>
-		<developer>
-			<id>mmauny</id>
-			<name>Matthieu Mauny</name>
-			<email>matthieu.mauny@puremvc.org</email>
-			<url>http://www.puremvc.org</url>
-			<organization>PureMVC</organization>
-			<organizationUrl>http://www.puremvc.org</organizationUrl>
-			<roles>
-				<role>developer</role>
-			</roles>
-			<timezone>+1</timezone>
-		</developer>
 		<developer>
 			<id>aquinault</id>
 			<name>Anthony Quinault</name>
