@@ -2,14 +2,17 @@ PureMVC Java MultiCore Port by Anthony Quinault <anthony.quinault@puremvc.org>
 PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved. 
 Your reuse is governed by the Creative Commons Attribution 3.0 License 
 --------------------------------------------------------------------------
-Release Date: 02/24/10
+Release Date: 06/16/10
     Platform: Java
      Version: 1 
     Revision: 0
-       Minor: 7
+       Minor: 8
       Author: Anthony Quinault <anthony.quinault@puremvc.org> 
      License: Creative Commons Attribution 3.0 United States License
 --------------------------------------------------------------------------
+1.0.8
+- Compatible with JavaFx
+
 1.0.7
 - HashMap with synchronized block issue corrected
 
