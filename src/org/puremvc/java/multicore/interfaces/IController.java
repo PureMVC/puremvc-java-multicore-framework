@@ -8,7 +8,7 @@ package org.puremvc.java.multicore.interfaces;
 
 /**
  * The interface definition for a PureMVC Controller.
- * 
+ *
  * <P>
  * In PureMVC, an <code>IController</code> implementor follows the 'Command
  * and Controller' strategy, and assumes these responsibilities:
@@ -23,49 +23,48 @@ package org.puremvc.java.multicore.interfaces;
  * <LI> Calling the <code>ICommand</code>'s <code>execute</code> method,
  * passing in the <code>INotification</code>.</LI>
  * </UL>
- * 
+ *
  * @see org.puremvc.java.interfaces INotification
  * @see org.puremvc.java.interfaces ICommand
  */
-public interface IController
-{
+public interface IController {
 
 	/**
 	 * Register a particular <code>ICommand</code> class as the handler for a
 	 * particular <code>INotification</code>.
-	 * 
+	 *
 	 * @param notificationName
 	 *            the name of the <code>INotification</code>
 	 * @param command
 	 *            the Class of the <code>ICommand</code>
 	 */
-	public void registerCommand( String notificationName, ICommand command );
+	public void registerCommand(String notificationName, ICommand command);
 
 	/**
 	 * Execute the <code>ICommand</code> previously registered as the handler
 	 * for <code>INotification</code>s with the given notification name.
-	 * 
+	 *
 	 * @param notification
 	 *            the <code>INotification</code> to execute the associated
 	 *            <code>ICommand</code> for
 	 */
-	public void executeCommand( INotification notification );
+	public void executeCommand(INotification notification);
 
 	/**
 	 * Remove a previously registered <code>ICommand</code> to
 	 * <code>INotification</code> mapping.
-	 * 
+	 *
 	 * @param notificationName
 	 *            the name of the <code>INotification</code> to remove the
 	 *            <code>ICommand</code> mapping for
 	 */
-	public void removeCommand( String notificationName );
-	
+	public void removeCommand(String notificationName);
+
 	/**
 	 * Check if a Command is registered for a given Notification 
-	 * 
+	 *
 	 * @param notificationName
 	 * @return whether a Command is currently registered for the given <code>notificationName</code>.
 	 */
-	public boolean hasCommand( String notificationName);
+	public boolean hasCommand(String notificationName);
 }

@@ -10,11 +10,10 @@ package org.puremvc.java.multicore.interfaces;
  * This interface must be implemented by all classes that want to be notified of
  * a notification.
  */
-public interface IFunction
-{
+public interface IFunction {
 
 	/**
 	 * @param notification
 	 */
-	public void onNotification( INotification notification );
+	public void onNotification(INotification notification);
 }

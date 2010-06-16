@@ -10,7 +10,7 @@ import org.puremvc.java.multicore.patterns.facade.Facade;
 
 /**
  * A Base <code>INotifier</code> implementation.
- * 
+ *
  * <P>
  * <code>MacroCommand, Command, Mediator</code> and <code>Proxy</code> all
  * have a need to send <code>Notifications</code>.
@@ -20,7 +20,7 @@ import org.puremvc.java.multicore.patterns.facade.Facade;
  * <code>sendNotification</code> that relieves implementation code of the
  * necessity to actually construct <code>Notifications</code>.
  * </P>
- * 
+ *
  * <P>
  * The <code>Notifier</code> class, which all of the above mentioned classes
  * extend, provides an initialized reference to the <code>Facade</code>
@@ -29,20 +29,19 @@ import org.puremvc.java.multicore.patterns.facade.Facade;
  * have frequent <code>Facade</code> interactions and usually require access
  * to the facade anyway.
  * </P>
- * 
+ *
  * @see org.puremvc.java.patterns.facade.Facade Facade
  * @see org.puremvc.java.patterns.mediator.Mediator Mediator
  * @see org.puremvc.java.patterns.proxy.Proxy Proxy
  * @see org.puremvc.java.patterns.command.SimpleCommand SimpleCommand
  * @see org.puremvc.java.patterns.command.MacroCommand MacroCommand
  */
-public class Notifier
-{
+public class Notifier {
 	// The Multiton Key for this app
 	protected String multitonKey = null;
-	
-	protected Facade getFacade(){
-		if(multitonKey ==null){
+
+	protected Facade getFacade() {
+		if (multitonKey == null) {
 			throw new RuntimeException("Notifier not initialized");
 		}
 		return Facade.getInstance(multitonKey);
@@ -50,11 +49,11 @@ public class Notifier
 
 	/**
 	 * Send an <code>INotification</code>s.
-	 * 
+	 *
 	 * <P>
 	 * Keeps us from having to construct new notification instances in our
 	 * implementation code.
-	 * 
+	 *
 	 * @param notificationName
 	 *            the name of the notiification to send
 	 * @param body
@@ -62,67 +61,60 @@ public class Notifier
 	 * @param type
 	 *            the type of the notification (optional)
 	 */
-
-	public void sendNotification( String notificationName, Object body,
-			String type )
-	{
-		getFacade().sendNotification( notificationName, body, type );
+	public void sendNotification(String notificationName, Object body,
+			String type) {
+		getFacade().sendNotification(notificationName, body, type);
 	}
-	
+
 	/**
 	 * Send an <code>INotification</code>s.
-	 * 
+	 *
 	 * <P>
 	 * Keeps us from having to construct new notification instances in our
 	 * implementation code.
-	 * 
+	 *
 	 * @param notificationName
 	 *            the name of the notiification to send
 	 * @param body
 	 *            the body of the notification (optional)
 	 */
-
-	public void sendNotification( String notificationName, Object body)
-	{
+	public void sendNotification(String notificationName, Object body) {
 		getFacade().sendNotification( notificationName, body);
 	}
-	
+
 	/**
 	 * Send an <code>INotification</code>s.
-	 * 
+	 *
 	 * <P>
 	 * Keeps us from having to construct new notification instances in our
 	 * implementation code.
-	 * 
+	 *
 	 * @param notificationName
 	 *            the name of the notiification to send
 	 */
-
-	public void sendNotification( String notificationName)
-	{
-		getFacade().sendNotification( notificationName);
+	public void sendNotification(String notificationName) {
+		getFacade().sendNotification(notificationName);
 	}
-	
+
 	/**
 	 * Initialize this INotifier instance.
 	 * <P>
-	 * This is how a Notifier gets its multitonKey. 
+	 * This is how a Notifier gets its multitonKey.
 	 * Calls to sendNotification or to access the
-	 * facade will fail until after this method 
+	 * facade will fail until after this method
 	 * has been called.</P>
-	 * 
+	 *
 	 * <P>
-	 * Mediators, Commands or Proxies may override 
+	 * Mediators, Commands or Proxies may override
 	 * this method in order to send notifications
 	 * or access the Multiton Facade instance as
 	 * soon as possible. They CANNOT access the facade
 	 * in their constructors, since this method will not
-	 * yet have been called.</P> 
-	 * 
+	 * yet have been called.</P>
+	 *
 	 * @param key the multitonKey for this INotifier to use
 	 */
-	public void initializeNotifier( String key )
-	{
+	public void initializeNotifier(String key) {
 		multitonKey = key;
 	}
 }

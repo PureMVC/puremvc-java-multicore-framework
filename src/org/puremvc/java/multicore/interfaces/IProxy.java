@@ -8,7 +8,7 @@ package org.puremvc.java.multicore.interfaces;
 
 /**
  * The interface definition for a PureMVC Proxy.
- * 
+ *
  * <P>
  * In PureMVC, <code>IProxy</code> implementors assume these responsibilities:
  * </P>
@@ -27,38 +27,37 @@ package org.puremvc.java.multicore.interfaces;
  * persist model data.</LI>
  * </UL>
  */
-public interface IProxy extends INotifier
-{
+public interface IProxy extends INotifier {
 
 	/**
-	 * Get the Proxy name
-	 * 
+	 * Get the Proxy name.
+	 *
 	 * @return the Proxy instance name
 	 */
-	public String getProxyName( );
-	
+	public String getProxyName();
+
 	/**
-	 * Set the data object
-	 * 
+	 * Set the data object.
+	 *
 	 * @param data the data object
 	 */
-	public void setData( Object data );
-	
+	public void setData(Object data);
+
 	/**
-	 * Get the data object
-	 * 
+	 * Get the data object.
+	 *
 	 * @return the data as type Object
 	 */
-	public Object getData(); 
-	
+	public Object getData();
+
 	/**
-	 * Called by the Model when the Proxy is registered
-	 */ 
+	 * Called by the Model when the Proxy is registered.
+	 */
 	public void onRegister();
-	
+
 	/**
-	 * Called by the Model when the Proxy is removed
-	 */ 
-	public void onRemove( );
+	 * Called by the Model when the Proxy is removed.
+	 */
+	public void onRemove();
 
 }

@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.puremvc</groupId>
 	<artifactId>PureMVC_Java_MultiCore</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<packaging>jar</packaging>
 	<name>PureMVC_Java_MultiCore</name>
 	<description>

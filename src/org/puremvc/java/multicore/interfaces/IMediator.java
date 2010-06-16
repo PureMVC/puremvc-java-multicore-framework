@@ -8,7 +8,7 @@ package org.puremvc.java.multicore.interfaces;
 
 /**
  * The interface definition for a PureMVC Mediator.
- * 
+ *
  * <P>
  * In PureMVC, <code>IMediator</code> implementors assume these
  * responsibilities:
@@ -37,34 +37,34 @@ package org.puremvc.java.multicore.interfaces;
  * will return an <code>Array</code> of <code>INotification</code> names
  * which it wishes to be notified about.
  * </P>
- * 
+ *
  * <P>
  * The <code>IView</code> will then create an <code>Observer</code> object
  * encapsulating that <code>IMediator</code>'s (<code>handleNotification</code>)
  * method and register it as an Observer for each <code>INotification</code>
  * name returned by <code>listNotificationInterests</code>.
  * </P>
- * 
+ *
  * <P>
  * A concrete IMediator implementor usually looks something like this:
  * </P>
- * 
+ *
  * <listing> import org.puremvc.patterns.mediator.~~; import
  * org.puremvc.patterns.observer.~~; import org.puremvc.core.view.~~;
- * 
+ *
  * import com.me.myapp.model.~~; import com.me.myapp.view.~~; import
  * com.me.myapp.controller.~~;
- * 
+ *
  * import mx.controls.ComboBox; import mx.events.ListEvent;
- * 
+ *
  * public class MyMediator extends Mediator implements IMediator {
- * 
+ *
  * public function MyComboMediator( viewComponent:Object ) { super(
  * viewComponent ); combo.addEventListener( Event.CHANGE, onChange ); }
- * 
+ *
  * public function listNotificationInterests():Array { return [
  * MyFacade.SET_SELECTION, MyFacade.SET_DATAPROVIDER ]; }
- * 
+ *
  * public function handleNotification( notification:INotification ):void {
  * switch ( notification.getName() ) { case MyFacade.SET_SELECTION:
  * setSelection(notification); break; case MyFacade.SET_DATAPROVIDER:
@@ -76,56 +76,55 @@ package org.puremvc.java.multicore.interfaces;
  * MyFacade.MYCOMBO_CHANGED, this ); } // A private getter for accessing the
  * view object by class private function get combo():ComboBox { return view as
  * ComboBox; } } </listing>
- * 
+ *
  * @see org.puremvc.java.interfaces.INotification INotification
  */
-public interface IMediator extends INotifier
-{
+public interface IMediator extends INotifier {
 
 	/**
-	 * Get the <code>IMediator</code> instance name
-	 * 
+	 * Get the <code>IMediator</code> instance name.
+	 *
 	 * @return the <code>IMediator</code> instance name
 	 */
-	public String getMediatorName( );
+	public String getMediatorName();
 
 	/**
 	 * Get the <code>IMediator</code>'s view component.
-	 * 
+	 *
 	 * @return Object the view component
 	 */
-	public Object getViewComponent( );
+	public Object getViewComponent();
 
 	/**
 	 * Set the <code>IMediator</code>'s view component.
-	 * 
+	 *
 	 * @param Object the view component
 	 */
-	public void setViewComponent( Object viewComponent );
+	public void setViewComponent(Object viewComponent);
 
 	/**
 	 * List <code>INotification</code> interests.
-	 * 
+	 *
 	 * @return an <code>Array</code> of the <code>INotification</code> names
 	 *         this <code>IMediator</code> has an interest in.
 	 */
-	public String[] listNotificationInterests( );
+	public String[] listNotificationInterests();
 
 	/**
 	 * Handle an <code>INotification</code>.
-	 * 
+	 *
 	 * @param notification
 	 *            the <code>INotification</code> to be handled
 	 */
-	public void handleNotification( INotification notification );
-	
+	public void handleNotification(INotification notification);
+
 	/**
-	 * Called by the View when the Mediator is registered
-	 */ 
+	 * Called by the View when the Mediator is registered.
+	 */
 	public void onRegister();
 
 	/**
-	 * Called by the View when the Mediator is removed
-	 */ 
+	 * Called by the View when the Mediator is removed.
+	 */
 	void onRemove();
 }
