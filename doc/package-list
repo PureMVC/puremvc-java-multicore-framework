@@ -1,0 +1,9 @@
+org.puremvc.java.multicore.core.controller
+org.puremvc.java.multicore.core.model
+org.puremvc.java.multicore.core.view
+org.puremvc.java.multicore.interfaces
+org.puremvc.java.multicore.patterns.command
+org.puremvc.java.multicore.patterns.facade
+org.puremvc.java.multicore.patterns.mediator
+org.puremvc.java.multicore.patterns.observer
+org.puremvc.java.multicore.patterns.proxy
