@@ -20,7 +20,7 @@ Production - [Version 1.0.8](https://github.com/PureMVC/puremvc-java-multicore-f
 * [Java](http://en.wikipedia.org/wiki/Java_(programming_language\))
 
 ## License
-* PureMVC MultiCore Framework for Java (Ported) - Copyright(c) 2008-2010 Anthony Quinault 
+* PureMVC MultiCore Framework for Java (Ported) - Copyright © 2008-2010 Anthony Quinault 
 * PureMVC - Copyright © 2006-2012 Futurescale, Inc.
 * All rights reserved.
 
