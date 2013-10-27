@@ -119,8 +119,13 @@ public class Model implements IModel {
 	 * @param proxy
 	 *            name of the <code>Proxy</code> instance to be removed.
 	 */
-	public IProxy removeProxy(String proxy) {
-		return (IProxy) this.proxyMap.remove(proxy);
+	public IProxy removeProxy(String proxyName) {
+		IProxy proxy = (IProxy) this.proxyMap.get(proxyName);
+		if(proxy != null){
+			this.proxyMap.remove(proxyName);
+			proxy.onRemove();
+		}
+		return proxy;
 	}
 
 	/**
