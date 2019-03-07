@@ -1,12 +1,17 @@
-PureMVC MultiCore Framework for Java (Ported)
+PureMVC MultiCore Framework for Java (Ported) - Legacy
 --------------------------------------------------------------------------
-Release Date: 06/16/10
+Release Date: 03/07/19
     Platform: Java
      Version: 1 
     Revision: 0
-       Minor: 8
+       Minor: 9
       Author: Anthony Quinault <anthony.quinault@puremvc.org> 
 --------------------------------------------------------------------------
+1.0.9
+- Moved to legacy. A brand new implementation of standard, multicore
+  and pipes has been built which are more closely in alignment with
+  the reference implementation.
+
 1.0.8
 - Compatible with JavaFx
 
