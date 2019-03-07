@@ -1,125 +1,119 @@
-/* 
- PureMVC Java MultiCore Port by Ima OpenSource <opensource@ima.eu>
- Maintained by Anthony Quinault <anthony.quinault@puremvc.org>
- PureMVC - Copyright(c) 2006-08 Futurescale, Inc., Some rights reserved. 
- Your reuse is governed by the Creative Commons Attribution 3.0 License 
- */
-package org.puremvc.java.multicore.patterns.command;
+//
+//  PureMVC Java Multicore
+//
+//  Copyright(c) 2019 Saad Shams <saad.shams@puremvc.org>
+//  Your reuse is governed by the Creative Commons Attribution 3.0 License
+//
 
-import java.util.Collection;
-import java.util.Vector;
+package org.puremvc.java.multicore.patterns.command;
 
 import org.puremvc.java.multicore.interfaces.ICommand;
 import org.puremvc.java.multicore.interfaces.INotification;
 import org.puremvc.java.multicore.patterns.observer.Notifier;
 
+import java.util.Vector;
+import java.util.function.Supplier;
 
 /**
- * A base <code>ICommand</code> implementation that executes other
- * <code>ICommand</code>s.
+ * A base <code>ICommand</code> implementation that executes other <code>ICommand</code>s.
  *
  * <P>
- * A <code>MacroCommand</code> maintains an list of <code>ICommand</code>
- * Class references called <i>SubCommands</i>.
- * </P>
+ * A <code>MacroCommand</code> maintains an list of
+ * <code>ICommand</code> Class references called <i>SubCommands</i>.</P>
  *
  * <P>
  * When <code>execute</code> is called, the <code>MacroCommand</code>
- * instantiates and calls <code>execute</code> on each of its <i>SubCommands</i>
- * turn. Each <i>SubCommand</i> will be passed a reference to the original
+ * instantiates and calls <code>execute</code> on each of its <i>SubCommands</i> turn.
+ * Each <i>SubCommand</i> will be passed a reference to the original
  * <code>INotification</code> that was passed to the <code>MacroCommand</code>'s
- * <code>execute</code> method.
- * </P>
+ * <code>execute</code> method.</P>
  *
  * <P>
- * Unlike <code>SimpleCommand</code>, your subclass should not override
- * <code>execute</code>, but instead, should override the
- * <code>initializeMacroCommand</code> method, calling
- * <code>addSubCommand</code> once for each <i>SubCommand</i> to be executed.
- * </P>
+ * Unlike <code>SimpleCommand</code>, your subclass
+ * should not override <code>execute</code>, but instead, should
+ * override the <code>initializeMacroCommand</code> method,
+ * calling <code>addSubCommand</code> once for each <i>SubCommand</i>
+ * to be executed.</P>
  *
- * <P>
- *
- * @see org.puremvc.java.core.controller.Controller Controller
- * @see org.puremvc.java.patterns.observer.Notification Notification
- * @see org.puremvc.java.patterns.command.SimpleCommand SimpleCommand
+ * @see org.puremvc.java.multicore.core.Controller Controller
+ * @see org.puremvc.java.multicore.patterns.observer.Notification Notification
+ * @see org.puremvc.java.multicore.patterns.command.SimpleCommand SimpleCommand
  */
 public class MacroCommand extends Notifier implements ICommand {
 
-	private Collection<ICommand> subCommands = null;
+    private Vector<Supplier<ICommand>> subCommands;
 
-	/**
-	 * Constructor.
-	 *
-	 * <P>
-	 * You should not need to define a constructor, instead, override the
-	 * <code>initializeMacroCommand</code> method.
-	 * </P>
-	 *
-	 * <P>
-	 * If your subclass does define a constructor, be sure to call
-	 * <code>super()</code>.
-	 * </P>
-	 */
-	public MacroCommand() {
-		this.subCommands = new Vector<ICommand>();
-		initializeMacroCommand();
-	}
+    /**
+     * Constructor.
+     *
+     * <P>
+     * You should not need to define a constructor,
+     * instead, override the <code>initializeMacroCommand</code>
+     * method.</P>
+     *
+     * <P>
+     * If your subclass does define a constructor, be
+     * sure to call <code>super()</code>.</P>
+     */
+    public MacroCommand() {
+        subCommands = new Vector<Supplier<ICommand>>();
+        initializeMacroCommand();
+    }
 
-	/**
-	 * Initialize the <code>MacroCommand</code>.
-	 *
-	 * <P>
-	 * In your subclass, override this method to initialize the
-	 * <code>MacroCommand</code>'s <i>SubCommand</i> list with
-	 * <code>ICommand</code> class references like this:
-	 * </P>
-	 *
-	 * <listing> // Initialize MyMacroCommand override protected function
-	 * initializeMacroCommand( ) : void { addSubCommand(
-	 * com.me.myapp.controller.FirstCommand ); addSubCommand(
-	 * com.me.myapp.controller.SecondCommand ); addSubCommand(
-	 * com.me.myapp.controller.ThirdCommand ); } </listing>
-	 *
-	 * <P>
-	 * Note that <i>SubCommand</i>s may be any <code>ICommand</code>
-	 * implementor, <code>MacroCommand</code>s or <code>SimpleCommands</code>
-	 * are both acceptable.
-	 */
-	protected void initializeMacroCommand() {
-	}
+    /**
+     * Initialize the <code>MacroCommand</code>.
+     *
+     * <P>
+     * In your subclass, override this method to
+     * initialize the <code>MacroCommand</code>'s <i>SubCommand</i>
+     * list with <code>ICommand</code> class references like
+     * this:</P>
+     *
+     * <pre>
+     * {@code
+     * // Initialize MyMacroCommand
+     * protected void initializeMacroCommand( )
+     * {
+     *      addSubCommand( () -> new com.me.myapp.controller.FirstCommand() );
+     *      addSubCommand( () -> new com.me.myapp.controller.SecondCommand() );
+     *      addSubCommand( () -> new com.me.myapp.controller.ThirdCommand() );
+     * }
+     * }
+     * </pre>
+     * <P>
+     * Note that <i>SubCommand</i>s may be any <code>ICommand</code> implementor,
+     * <code>MacroCommand</code>s or <code>SimpleCommands</code> are both acceptable.</P>
+     */
+    protected void initializeMacroCommand() {
+    }
 
-	/**
-	 * Add a <i>SubCommand</i>.
-	 *
-	 * <P>
-	 * The <i>SubCommands</i> will be called in First In/First Out (FIFO)
-	 * order.
-	 * </P>
-	 *
-	 * @param commandClassRef
-	 *            a reference to the <code>Class</code> of the
-	 *            <code>ICommand</code>.
-	 */
-	protected void addSubCommand(ICommand commandClassRef) {
-		this.subCommands.add(commandClassRef);
-	}
+    /**
+     * Add a <i>SubCommand</i>.
+     *
+     * <P>
+     * The <i>SubCommands</i> will be called in First In/First Out (FIFO)
+     * order.</P>
+     *
+     * @param commandSupplier a reference to the commandSupplier of the <code>ICommand</code>.
+     */
+    protected void addSubCommand(Supplier<ICommand> commandSupplier) {
+        subCommands.add(commandSupplier);
+    }
 
-	/**
-	 * Execute this <code>MacroCommand</code>'s <i>SubCommands</i>.
-	 *
-	 * <P>
-	 * The <i>SubCommands</i> will be called in First In/First Out (FIFO)
-	 * order.
-	 *
-	 * @param notification
-	 *            the <code>INotification</code> object to be passsed to each
-	 *            <i>SubCommand</i>.
-	 */
-	public void execute(INotification notification) {
-		for (ICommand command : subCommands) { 
-			command.initializeNotifier( multitonKey );
-			command.execute( notification );
-		}
-	}
+    /**
+     * Execute this <code>MacroCommand</code>'s <i>SubCommands</i>.
+     *
+     * <P>
+     * The <i>SubCommands</i> will be called in First In/First Out (FIFO)
+     * order.
+     *
+     * @param notification the <code>INotification</code> object to be passsed to each <i>SubCommand</i>.
+     */
+    public void execute(INotification notification) {
+        for(Supplier<ICommand> commandSupplier : subCommands) {
+            ICommand command = commandSupplier.get();
+            command.initializeNotifier(multitonKey);
+            command.execute(notification);
+        }
+    }
 }

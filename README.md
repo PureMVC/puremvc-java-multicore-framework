@@ -1,29 +1,25 @@
-## [PureMVC](http://puremvc.github.com/) Java MultiCore Framework - LEGACY IMPLEMENTATION
-### For the current implementation go [here](https://github.com/PureMVC/puremvc-java-multicore-framework/wiki)
+## [PureMVC](http://puremvc.github.com/) Java MultiCore Framework
 
-PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. This is a Java port of the [AS3 reference implementation of the MultiCore Version](https://github.com/PureMVC/puremvc-as3-multicore-framework/wiki). It supports [modular programming](http://en.wikipedia.org/wiki/Modular_programming) through the use of [Multiton](http://en.wikipedia.org/wiki/Multiton) Core actors instead of the [Singleton](http://en.wikipedia.org/wiki/Singleton_pattern)s used in the [Standard Version](https://github.com/PureMVC/puremvc-java-standard-framework/wiki).
+PureMVC is a lightweight framework for creating applications based upon the classic [Model-View-Controller](http://en.wikipedia.org/wiki/Model-view-controller) design meta-pattern. It supports [modular programming](http://en.wikipedia.org/wiki/Modular_programming) through the use of [Multiton](http://en.wikipedia.org/wiki/Multiton) Core actors instead of the [Singletons](http://en.wikipedia.org/wiki/Singleton_pattern) used in the [Standard](https://github.com/PureMVC/puremvc-java-standard-framework/wiki) Version.
 
-* [API Docs](http://puremvc.org/pages/docs/Java/legacy/multicore/doc)
-* [Discussion](http://forums.puremvc.org/index.php?board=60.0)
-* [Unit Tests](https://github.com/PureMVC/puremvc-java-multicore-unittests/wiki)
-* [Overview Presentation](http://puremvc.tv/#P002/)
-
-## Demos
-* [Employee Admin](https://github.com/PureMVC/puremvc-java-demo-gwt-employeeadmin/wiki)
-* [Employee Admin Mobile](https://github.com/PureMVC/puremvc-java-demo-gwt-employeeadmin-mobile/wiki)
+* [API Docs](http://puremvc.org/pages/docs/Java/multicore)
+* [Unit Tests](http://puremvc.github.io/pages/images/screenshots/PureMVC-Shot-Java-Multicore-UnitTests.png)
+* [Discussion](http://forums.puremvc.org/index.php/board,60.0.html)
+* [Legacy Implementation](https://github.com/PureMVC/puremvc-java-multicore-framework/tree/1.0.9)
 
 ## Utilities
 * [Pipes](https://github.com/PureMVC/puremvc-java-util-pipes/wiki)
 
-## Status
-Legacy - [Version 1.0.9](https://github.com/PureMVC/puremvc-java-multicore-framework/blob/master/VERSION)
-
 ## Platforms / Technologies
-* [Java](http://en.wikipedia.org/wiki/Java_(programming_language\))
+* [Java](https://en.wikipedia.org/wiki/Java_(programming_language))
+* [Android](https://en.wikipedia.org/wiki/Android_(operating_system))
+
+## Status
+Production - [Version 2.0](https://github.com/PureMVC/puremvc-java-multicore-framework/blob/master/VERSION)
 
 ## License
-* PureMVC MultiCore Framework for Java (Ported) / Legacy - Copyright © 2008-2010 Anthony Quinault 
-* PureMVC - Copyright © 2006-2012 Futurescale, Inc.
+* PureMVC MultiCore Framework for Java - Copyright © 2019 [Saad Shams](https://www.linkedin.com/in/muizz)
+* PureMVC - Copyright © 2019 [Futurescale, Inc.](http://futurescale.com/)
 * All rights reserved.
 
 * Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
