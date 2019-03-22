@@ -7,6 +7,16 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [Discussion](http://forums.puremvc.org/index.php/board,60.0.html)
 * [Legacy Implementation](https://github.com/PureMVC/puremvc-java-multicore-framework/tree/1.0.9)
 
+## Maven Installation
+```xml
+<dependencies>
+    <dependency>
+        <groupId>org.puremvc</groupId>
+        <artifactId>puremvc-multicore</artifactId>
+    </dependency>
+</dependencies>
+```
+
 ## Utilities
 * [Pipes](https://github.com/PureMVC/puremvc-java-util-pipes/wiki)
 
@@ -15,7 +25,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 * [Android](https://en.wikipedia.org/wiki/Android_(operating_system))
 
 ## Status
-Production - [Version 2.0](https://github.com/PureMVC/puremvc-java-multicore-framework/blob/master/VERSION)
+Production - [Version 2.1](https://github.com/PureMVC/puremvc-java-multicore-framework/blob/master/VERSION)
 
 ## License
 * PureMVC MultiCore Framework for Java - Copyright © 2019 [Saad Shams](https://www.linkedin.com/in/muizz)
