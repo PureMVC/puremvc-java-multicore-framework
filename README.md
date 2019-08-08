@@ -13,6 +13,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
     <dependency>
         <groupId>org.puremvc</groupId>
         <artifactId>puremvc-multicore</artifactId>
+        <version>2.1</version>
     </dependency>
 </dependencies>
 ```
