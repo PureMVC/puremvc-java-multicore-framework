@@ -20,6 +20,7 @@ PureMVC is a lightweight framework for creating applications based upon the clas
 
 ## Demos
 * [Employee Admin Microservice](https://github.com/PureMVC/puremvc-java-demo-microservice-employeeadmin/wiki)
+* [Employee Admin Android App](https://github.com/PureMVC/purmevc-java-demo-android-employeeadmin/wiki)
 
 ## Utilities
 * [Pipes](https://github.com/PureMVC/puremvc-java-util-pipes/wiki)
