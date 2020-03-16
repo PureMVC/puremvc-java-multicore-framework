@@ -19,7 +19,7 @@ package org.puremvc.java.multicore.interfaces;
  *
  * <P>The <code>Notifier</code> class, which all of the above mentioned classes
  * extend, also provides an initialized reference to the <code>Facade</code>
- * Singleton, which is required for the convienience method
+ * Singleton, which is required for the convenience method
  * for sending <code>Notifications</code>, but also eases implementation as these
  * classes have frequent <code>Facade</code> interactions and usually require
  * access to the facade anyway.</P>

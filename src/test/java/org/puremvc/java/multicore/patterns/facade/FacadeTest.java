@@ -29,7 +29,7 @@ public class FacadeTest {
     @Test
     public void testGetInstance() {
         // Test Factory Method
-        IFacade facade = Facade.getInstance("FacadeTestKey1", () -> new Facade("FacadeTestKey1"));
+        IFacade facade = Facade.getInstance("FacadeTestKey1", key -> new Facade(key));
 
         // test assertions
         Assertions.assertNotNull(facade, "Expecting instance not null");
@@ -53,7 +53,7 @@ public class FacadeTest {
     public void testRegisterCommandAndSendNotification() {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' notifications
-        IFacade facade = Facade.getInstance("FacadeTestKey2", () -> new Facade("FacadeTestKey2"));
+        IFacade facade = Facade.getInstance("FacadeTestKey2", key -> new Facade(key));
         facade.registerCommand("FacadeTestNote", () -> new FacadeTestCommand());
 
         // Send notification. The Command associated with the event
@@ -83,8 +83,8 @@ public class FacadeTest {
     public void testRegisterAndRemoveCommandAndSendNotification() {
         // Create the Facade, register the FacadeTestCommand to
         // handle 'FacadeTest' events
-        IFacade facade = Facade.getInstance("FacadeTestKey3", () -> new Facade("FacadeTestKey3"));
-        facade.registerCommand("FacadeTestKey3", () -> new FacadeTestCommand());
+        IFacade facade = Facade.getInstance("FacadeTestKey3", key -> new Facade(key));
+        facade.registerCommand("FacadeTestNote", () -> new FacadeTestCommand());
         facade.removeCommand("FacadeTestNote");
 
         // Send notification. The Command associated with the event
@@ -108,7 +108,7 @@ public class FacadeTest {
     @Test
     public void testRegisterAndRetrieveProxy() {
         // register a proxy and retrieve it.
-        IFacade facade = Facade.getInstance("FacadeTestKey4", () -> new Facade("FacadeTestKey4"));
+        IFacade facade = Facade.getInstance("FacadeTestKey4", key -> new Facade(key));
         facade.registerProxy(new Proxy("colors", new String[]{"red", "green", "blue"}));
         IProxy proxy = facade.retrieveProxy("colors");
 
@@ -133,7 +133,7 @@ public class FacadeTest {
     @Test
     public void testRegisterAndRemoveProxy() {
         // register a proxy, remove it, then try to retrieve it
-        IFacade facade = Facade.getInstance("FacadeTestKey5", () -> new Facade("FacadeTestKey5"));
+        IFacade facade = Facade.getInstance("FacadeTestKey5", key -> new Facade(key));
         IProxy proxy = new Proxy("sizes", new String[]{"7", "13", "21"});
         facade.registerProxy(proxy);
 
@@ -156,7 +156,7 @@ public class FacadeTest {
     @Test
     public void testRegisterRetrieveAndRemoveMediator() {
         // register a mediator, remove it, then try to retrieve it
-        IFacade facade = Facade.getInstance("FacadeTestKey6", () -> new Facade("FacadeTestKey6"));
+        IFacade facade = Facade.getInstance("FacadeTestKey6", key -> new Facade(key));
         facade.registerMediator(new Mediator(Mediator.NAME, new Object()));
 
         // retrieve the mediator
@@ -178,7 +178,7 @@ public class FacadeTest {
     @Test
     public void testHasProxy() {
         // register a Proxy
-        IFacade facade = Facade.getInstance("FacadeTestKey7", () -> new Facade("FacadeTestKey7"));
+        IFacade facade = Facade.getInstance("FacadeTestKey7", key -> new Facade(key));
         facade.registerProxy(new Proxy("hasProxyTest", new Integer[]{1, 2, 3,}));
 
         // assert that the model.hasProxy method returns true
@@ -192,7 +192,7 @@ public class FacadeTest {
     @Test
     public void testHasMediator() {
         // register a Mediator
-        IFacade facade = Facade.getInstance("FacadeTestKey8", () -> new Facade("FacadeTestKey8"));
+        IFacade facade = Facade.getInstance("FacadeTestKey8", key -> new Facade(key));
         facade.registerMediator(new Mediator("facadeHasMediatorTest", new Object()));
 
         // assert that the facade.hasMediator method returns true
@@ -212,7 +212,7 @@ public class FacadeTest {
     @Test
     public void testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
-        IFacade facade = Facade.getInstance("FacadeTestKey10", () -> new Facade("FacadeTestKey10"));
+        IFacade facade = Facade.getInstance("FacadeTestKey10", key -> new Facade(key));
         facade.registerCommand("facadeHasCommandTest", () -> new FacadeTestCommand());
 
         // test that hasCommand returns true for hasCommandTest notifications
@@ -234,7 +234,7 @@ public class FacadeTest {
         Assertions.assertFalse(Facade.hasCore("FacadeTestKey11"), "Expecting facade.hasCore('FacadeTestKey11') == false");
 
         // register a Core
-        IFacade facade = Facade.getInstance("FacadeTestKey11", () -> new Facade("FacadeTestKey11"));
+        IFacade facade = Facade.getInstance("FacadeTestKey11", key -> new Facade(key));
 
         // assert that the Facade.hasCore method returns true now that a Core is registered
         Assertions.assertTrue(Facade.hasCore("FacadeTestKey11"), "Expecting facade.hasCore('FacadeTestKey11') == true");

@@ -40,7 +40,7 @@ public class ViewTest {
     @Test
     public void testGetInstance() {
         // Test Factory Method
-        IView view = View.getInstance("ViewTestKey1", () -> new View("ViewTestKey1"));
+        IView view = View.getInstance("ViewTestKey1", key -> new View(key));
 
         // test assertions
         Assertions.assertTrue(view != null, "Expecting instance not null");
@@ -68,7 +68,7 @@ public class ViewTest {
     @Test
     public void testRegisterAndNotifyObserver() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey2", () -> new View("ViewTestKey2"));
+        IView view = View.getInstance("ViewTestKey2", key -> new View(key));
 
         // Create observer, passing in notification method and context
         Observer observer = new Observer(this::viewTestMethod, this);
@@ -111,7 +111,7 @@ public class ViewTest {
     @Test
     public void testRegisterAndRetrieveMediator() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey3", () -> new View("ViewTestKey3"));
+        IView view = View.getInstance("ViewTestKey3", key -> new View(key));
 
         // Create and register the test mediator
         ViewTestMediator viewTestMediator = new ViewTestMediator(this);
@@ -130,7 +130,7 @@ public class ViewTest {
     @Test
     public void testHasMediator() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey4", () -> new View("ViewTestKey4"));
+        IView view = View.getInstance("ViewTestKey4", key -> new View(key));
 
         // Create and register the test mediator
         Mediator mediator = new Mediator("hasMediatorTest", this);
@@ -153,7 +153,7 @@ public class ViewTest {
     @Test
     public void testRegisterAndRemoveMediator() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey5", () -> new View("ViewTestKey5"));
+        IView view = View.getInstance("ViewTestKey5", key -> new View(key));
 
         // Create and register the test mediator
         IMediator mediator = new Mediator("testing", this);
@@ -175,7 +175,7 @@ public class ViewTest {
     @Test
     public void testOnRegisterAndOnRemove() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey6", () -> new View("ViewTestKey6"));
+        IView view = View.getInstance("ViewTestKey6", key -> new View(key));
 
         // Create and register the test mediator
         IMediator mediator = new ViewTestMediator4(this);
@@ -197,7 +197,7 @@ public class ViewTest {
     @Test
     public void testSuccessiveRegisterAndRemoveMediator() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey7", () -> new View("ViewTestKey7"));
+        IView view = View.getInstance("ViewTestKey7", key -> new View(key));
 
         // Create and register the test mediator,
         // but not so we have a reference to it
@@ -224,7 +224,7 @@ public class ViewTest {
         view.removeMediator(ViewTestMediator.NAME);
 
         // test that retrieving it now returns null
-        Assertions.assertNull(view.removeMediator(ViewTestMediator.NAME), "Expecting view.removeMediator(ViewTestMediator.NAME) doesn't crash");
+        Assertions.assertNull(view.retrieveMediator(ViewTestMediator.NAME), "Expecting view.removeMediator(ViewTestMediator.NAME) doesn't crash");
     }
 
     /**
@@ -235,7 +235,7 @@ public class ViewTest {
     @Test
     public void testRemoveMediatorAndSubsequentNotify() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey8", () -> new View("ViewTestKey8"));
+        IView view = View.getInstance("ViewTestKey8", key -> new View(key));
 
         // Create and register the test mediator to be removed.
         view.registerMediator(new ViewTestMediator2(this));
@@ -272,7 +272,7 @@ public class ViewTest {
     @Test
     public void testRemoveOneOfTwoMediatorsAndSubsequentNotify() {
         // Get the Multiton View instance
-        IView view = View.getInstance("ViewTestKey9", () -> new View("ViewTestKey9"));
+        IView view = View.getInstance("ViewTestKey9", key -> new View(key));
 
         // Create and register that responds to notifications 1 and 2
         view.registerMediator(new ViewTestMediator2(this));
@@ -321,7 +321,7 @@ public class ViewTest {
     @Test
     public void testMediatorReregistration() {
         // Get the Singleton View instance
-        IView view = View.getInstance("ViewTestKey10", () -> new View("ViewTestKey10"));
+        IView view = View.getInstance("ViewTestKey10", key -> new View(key));
 
         // Create and register that responds to notification 5
         view.registerMediator(new ViewTestMediator5(this));
@@ -357,7 +357,7 @@ public class ViewTest {
     @Test
     public void testModifyObserverListDuringNotification() {
         // Get the Singleton View instance
-        IView view = View.getInstance("ViewTestKey11", () -> new View("ViewTestKey11"));
+        IView view = View.getInstance("ViewTestKey11", key -> new View(key));
 
         // Create and register several mediator instances that respond to notification 6
         // by removing themselves, which will cause the observer list for that notification

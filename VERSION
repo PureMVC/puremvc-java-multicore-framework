@@ -1,12 +1,14 @@
 PureMVC MultiCore Framework for Java
 --------------------------------------------------------------------------
-Release Date: 03/22/19
+Release Date: 03/16/20
     Platform: Java
      Version: 2
-    Revision: 1
+    Revision: 2
        Minor: 0
       Author: Saad Shams <saad.shams@puremvc.org>
 --------------------------------------------------------------------------
+2.2 - Fixes, Refactor
+
 2.1 - Maven Integration
 
 2.0 - Brand new implementation of ported code, equivalent to AS3 MultiCore Version 1.0.5.

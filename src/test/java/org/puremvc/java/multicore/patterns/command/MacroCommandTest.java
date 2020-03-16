@@ -58,6 +58,7 @@ public class MacroCommandTest {
 
         // Create the SimpleCommand
         MacroCommandTestCommand command = new MacroCommandTestCommand();
+        command.initializeNotifier("test");
 
         // Execute the SimpleCommand
         command.execute(note);

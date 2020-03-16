@@ -17,6 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
@@ -110,19 +111,19 @@ public class Controller implements IController {
      * </pre>
      */
     public void initializeController() {
-        view = View.getInstance(multitonKey, () -> new View(multitonKey));
+        view = View.getInstance(multitonKey, key -> new View(key));
     }
 
     /**
      * <P><code>Controller</code> Multiton Factory method.</P>
      *
      * @param key multitonKey
-     * @param controllerSupplier supplier that returns <code>IController</code>
+     * @param factory a factory that accepts the key and returns <code>IController</code>
      * @return the Multiton instance of <code>Controller</code>
      */
-    public synchronized static IController getInstance(String key, Supplier<IController> controllerSupplier) {
+    public synchronized static IController getInstance(String key, Function<String, IController> factory) {
         if(instanceMap.get(key) == null) {
-            instanceMap.put(key, controllerSupplier.get());
+            instanceMap.put(key, factory.apply(key));
         }
         return instanceMap.get(key);
     }

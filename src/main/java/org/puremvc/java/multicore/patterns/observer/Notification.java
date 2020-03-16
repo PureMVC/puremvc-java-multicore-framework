@@ -130,10 +130,10 @@ public class Notification implements INotification {
      * @return the string representation of the <code>Notification</code> instance.
      */
     public String toString() {
-        String msg = "Notification Name: " + getName();
-        msg += "\nBody:" + ((body == null) ? "null" : body.toString());
-        msg += "\nType:" + ((type == null) ? "null" : type);
-        return msg;
+        return new StringBuilder("Notification Name: " + getName())
+                .append("\nBody:" + ((body == null) ? "null" : body.toString()))
+                .append("\nType:" + ((type == null) ? "null" : type))
+                .toString();
     }
 
 }

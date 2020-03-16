@@ -16,7 +16,7 @@ import org.puremvc.java.multicore.patterns.observer.Observer;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 /**
  * <P>A Multiton <code>IView</code> implementation.</P>
@@ -79,12 +79,12 @@ public class View implements IView {
      * <P>View Singleton Factory method.</P>
      *
      * @param key multitonKey
-     * @param viewSupplier supplier that returns <code>IView</code>
+     * @param factory a factory that accepts the key and returns <code>IView</code>
      * @return the Multiton instance of <code>View</code>
      */
-    public synchronized static IView getInstance(String key, Supplier<IView> viewSupplier) {
+    public synchronized static IView getInstance(String key, Function<String, IView> factory) {
         if(instanceMap.get(key) == null) {
-            instanceMap.put(key, viewSupplier.get());
+            instanceMap.put(key, factory.apply(key));
         }
         return instanceMap.get(key);
     }

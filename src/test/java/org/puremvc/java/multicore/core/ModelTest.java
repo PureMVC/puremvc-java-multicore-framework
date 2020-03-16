@@ -23,7 +23,7 @@ public class ModelTest {
      */
     public void testGetInstance() {
         // Test Factory Method
-        IModel model = Model.getInstance("ModelTestKey1", () -> new Model("ModelTestKey1"));
+        IModel model = Model.getInstance("ModelTestKey1", key -> new Model(key));
 
         // test assertions
         Assertions.assertNotNull(model, "Expecting instance not null");
@@ -40,7 +40,7 @@ public class ModelTest {
      */
     public void testRegisterAndRetrieveProxy() {
         // register a proxy and retrieve it.
-        IModel model = Model.getInstance("ModelTestKey2", () -> new Model("ModelTestKey2"));
+        IModel model = Model.getInstance("ModelTestKey2", key -> new Model(key));
         model.registerProxy(new Proxy("colors", new String[]{"red", "green", "blue"}));
         IProxy proxy = model.retrieveProxy("colors");
         String[] data = (String[]) proxy.getData();
@@ -60,7 +60,7 @@ public class ModelTest {
     @Test
     public void testRegisterAndRemoveProxy() {
         // register a proxy, remove it, then try to retrieve it
-        IModel model = Model.getInstance("ModelTestKey4", () -> new Model("ModelTestKey4"));
+        IModel model = Model.getInstance("ModelTestKey4", key -> new Model(key));
         IProxy proxy = new Proxy("sizes", new String[]{"7", "13", "21"});
         model.registerProxy(proxy);
 
@@ -83,7 +83,7 @@ public class ModelTest {
     @Test
     public void testHasProxy() {
         // register a proxy
-        IModel model = Model.getInstance("ModelTestKey4", () -> new Model("ModelTestKey4"));
+        IModel model = Model.getInstance("ModelTestKey4", key -> new Model(key));
         IProxy proxy = new Proxy("aces", new String[]{"clubs", "spades", "hearts", "diamonds"});
         model.registerProxy(proxy);
 
@@ -105,7 +105,7 @@ public class ModelTest {
     @Test
     public void testOnRegisterAndOnRemove() {
         // Get a Multiton View instance
-        IModel model = Model.getInstance("ModelTestKey4", () -> new Model("ModelTestKey4"));
+        IModel model = Model.getInstance("ModelTestKey4", key -> new Model(key));
 
         // Create and register the test mediator
         IProxy proxy = new ModelTestProxy();

@@ -28,7 +28,7 @@ public class ControllerTest {
     @Test
     public void testGetInstance() {
         // Test Factory Method
-        IController controller = Controller.getInstance("ControllerTestKey1", () -> new Controller("ControllerTestKey1"));
+        IController controller = Controller.getInstance("ControllerTestKey1", key -> new Controller(key));
 
         // test assertion
         Assertions.assertNotNull(controller, "Expecting instance not null");
@@ -51,7 +51,7 @@ public class ControllerTest {
     @Test
     public void testRegisterAndExecuteCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        IController controller = Controller.getInstance("ControllerTestKey2", () -> new Controller("ControllerTestKey2"));
+        IController controller = Controller.getInstance("ControllerTestKey2", key -> new Controller(key));
         controller.registerCommand("ControllerTest", () -> new ControllerTestCommand());
 
         // Create a 'ControllerTest' note
@@ -76,7 +76,7 @@ public class ControllerTest {
     @Test
     public void testRegisterAndRemoveCommand() {
         // Create the controller, register the ControllerTestCommand to handle 'ControllerTest' notes
-        IController controller = Controller.getInstance("ControllerTestKey3", () -> new Controller("ControllerTestKey3"));
+        IController controller = Controller.getInstance("ControllerTestKey3", key -> new Controller(key));
         controller.registerCommand("ControllerRemoveTest", () -> new ControllerTestCommand());
 
         // Create a 'ControllerTest' note
@@ -112,7 +112,7 @@ public class ControllerTest {
     @Test
     public void testHasCommand() {
         // register the ControllerTestCommand to handle 'hasCommandTest' notes
-        IController controller = Controller.getInstance("ControllerTestKey4", () -> new Controller("ControllerTestKey4"));
+        IController controller = Controller.getInstance("ControllerTestKey4", key -> new Controller(key));
         controller.registerCommand("hasCommandTest", () -> new ControllerTestCommand());
 
         // test that hasCommand returns true for hasCommandTest notifications
@@ -137,7 +137,7 @@ public class ControllerTest {
     @Test
     public void testReRegisterAndExecuteCommand() {
         // Fetch the controller, register the ControllerTestCommand2 to handle 'ControllerTest2' notes
-        IController controller = Controller.getInstance("ControllerTestKey5", () -> new Controller("ControllerTestKey5"));
+        IController controller = Controller.getInstance("ControllerTestKey5", key -> new Controller(key));
         controller.registerCommand("ControllerTest2", () -> new ControllerTestCommand2());
 
         // Remove the Command from the Controller
@@ -151,7 +151,7 @@ public class ControllerTest {
         INotification note = new Notification("ControllerTest2", vo);
 
         // retrieve a reference to the View from the same core.
-        IView view = View.getInstance("ControllerTestKey5", () -> new View("ControllerTestKey5"));
+        IView view = View.getInstance("ControllerTestKey5", key -> new View(key));
 
         // send the Notification
         view.notifyObservers(note);

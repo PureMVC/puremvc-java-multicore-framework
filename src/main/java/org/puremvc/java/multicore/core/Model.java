@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
-import java.util.function.Supplier;
+import java.util.function.Function;
 
 /**
  * <P>A Multiton <code>IModel</code> implementation.</P>
@@ -65,7 +65,6 @@ public class Model implements IModel {
      *
      * @param key multitonKey
      * @throws Error Error if instance for this Multiton key instance has already been constructed
-     *
      */
     public Model(String key) {
         if(instanceMap.get(key) != null) throw new Error(MULTITON_MSG);
@@ -90,12 +89,12 @@ public class Model implements IModel {
      * <P><code>Model</code> Multiton Factory method.</P>
      *
      * @param key multitonKey
-     * @param modelSupplier supplier that returns <code>IModel</code>
+     * @param factory a factory that accepts the key and returns <code>IModel</code>
      * @return the Multiton instance of <code>Model</code>
      */
-    public synchronized static IModel getInstance(String key, Supplier<IModel> modelSupplier) {
+    public synchronized static IModel getInstance(String key, Function<String, IModel> factory) {
         if(instanceMap.get(key) == null) {
-            instanceMap.put(key, modelSupplier.get());
+            instanceMap.put(key, factory.apply(key));
         }
         return instanceMap.get(key);
     }

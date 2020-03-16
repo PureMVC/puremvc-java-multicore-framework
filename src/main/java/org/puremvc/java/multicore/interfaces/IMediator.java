@@ -44,9 +44,9 @@ package org.puremvc.java.multicore.interfaces;
  * <P>A concrete IMediator implementor usually looks something like this:</P>
  *
  * <pre>
- * {@code import org.puremvc.as3.multicore.patterns.mediator.*;
- * import org.puremvc.as3.multicore.patterns.observer.*;
- * import org.puremvc.as3.multicore.core.view.*;
+ * {@code import org.puremvc.java.multicore.patterns.mediator.*;
+ * import org.puremvc.java.multicore.patterns.observer.*;
+ * import org.puremvc.java.multicore.core.view.*;
  *
  * import com.me.myapp.model.*;
  * import com.me.myapp.view.*;

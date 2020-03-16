@@ -51,7 +51,7 @@ public class Notifier implements INotifier {
 
     protected IFacade getFacade() {
         if(multitonKey == null) throw new RuntimeException(MULTITON_MSG);
-        return Facade.getInstance(multitonKey, () -> new Facade(multitonKey));
+        return Facade.getInstance(multitonKey, key -> new Facade(key));
     }
 
     /**

@@ -15,8 +15,16 @@ import org.puremvc.java.multicore.patterns.observer.Notification;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
+/**
+ * A base Multiton <code>IFacade</code> implementation.
+ *
+ * @see org.puremvc.java.multicore.core.Model Model
+ * @see org.puremvc.java.multicore.core.View View
+ * @see org.puremvc.java.multicore.core.Controller Controller
+ */
 public class Facade implements IFacade {
 
     // References to Model, View and Controller
@@ -70,12 +78,12 @@ public class Facade implements IFacade {
      * <P>Facade Multiton Factory method</P>
      *
      * @param key multitonKey
-     * @param facadeSupplier supplier that returns <code>IFacade</code>
+     * @param factory a factory that accepts the key and returns <code>IFacade</code>
      * @return the Multiton instance of the Facade
      */
-    public synchronized static IFacade getInstance(String key, Supplier<IFacade> facadeSupplier) {
+    public synchronized static IFacade getInstance(String key, Function<String, IFacade> factory) {
         if(instanceMap.get(key) == null) {
-            instanceMap.put(key, facadeSupplier.get());
+            instanceMap.put(key, factory.apply(key));
         }
         return instanceMap.get(key);
     }
@@ -98,7 +106,7 @@ public class Facade implements IFacade {
      */
     protected void initializeController() {
         if(controller != null) return;
-        controller = Controller.getInstance(multitonKey, () -> new Controller(multitonKey));
+        controller = Controller.getInstance(multitonKey, key -> new Controller(key));
     }
 
     /**
@@ -126,7 +134,7 @@ public class Facade implements IFacade {
      */
     protected void initializeModel() {
         if(model != null) return;
-        model = Model.getInstance(multitonKey, () -> new Model(multitonKey));
+        model = Model.getInstance(multitonKey, key -> new Model(key));
     }
 
     /**
@@ -153,7 +161,7 @@ public class Facade implements IFacade {
      */
     protected void initializeView() {
         if(view != null) return;
-        view = View.getInstance(multitonKey, () -> new View(multitonKey));
+        view = View.getInstance(multitonKey, key -> new View(key));
     }
 
     /**
